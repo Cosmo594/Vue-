@@ -11,34 +11,29 @@
   <body>
     <div id="mask">
       <div class="center">
-        <h2 class="title"><img src="./images/logo.png" alt=""> 深圳创维校区环境</h2>
-        <img :src="imgList[index]" alt="" />
-        <a
-          href="javascript:void(0)"
-          @click="prev"
-          class="left"
-          v-show="index>0"
-        >
-          <img src="./images/prev.png" alt="" />
+        <h2 class="title">
+          <img src="./images/logo.png" alt="">
+        </h2>
+        <img :src="imgArr[index]" alt="">
+        <!-- <a href="javascript:;" v-show="index!=0" @click="prev" class="left">
+          <img src="./images/prev.png" alt="">
+        </a> -->
+        <a href="javascript:;" v-if="index!=0" @click="prev" class="left">
+          <img src="./images/prev.png" alt="">
         </a>
-        <a
-          href="javascript:void(0)"
-          @click="next"
-          class="right"
-          v-show="index<imgList.length-1"
-        >
-          <img src="./images/next.png" alt="" />
+        <a href="javascript:;" v-show="index<imgArr.length-1" @click="next" class="right">
+          <img src="./images/next.png" alt="">
         </a>
       </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-   
+
     <script>
-      const app = new Vue({
-        el: "#mask",
-        data: {
-          imgList: [
+      var app = new Vue({
+        el:"#mask",
+        data:{
+          imgArr:[
             "./images/00.jpg",
             "./images/01.jpg",
             "./images/02.jpg",
@@ -49,21 +44,20 @@
             "./images/07.jpg",
             "./images/08.jpg",
             "./images/09.jpg",
-            "./images/10.jpg",
+            "./images/10.jpg"
           ],
-          index: 0
+          index:0,
         },
-        methods: {
-          // 上一张
-          prev() {
+        methods:{
+          prev:function(){
             this.index--;
           },
-          // 下一张
-          next() {
+          next:function(){
             this.index++;
           }
         }
-      });
+      })
     </script>
+
   </body>
 </html>

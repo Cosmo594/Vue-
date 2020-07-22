@@ -9,7 +9,7 @@
   <body>
     <div id="app">
       <input type="button" value="切换显示状态" @click="changeIsShow">
-      <input type="button" value="累加年龄" @click="addAge">
+      <input type="button" value="增加年龄" @click="addAge">
       <img v-show="isShow" src="./img/monkey.gif" alt="">
       <img v-show="age>=18" src="./img/monkey.gif" alt="">
     </div>
@@ -22,7 +22,7 @@
           isShow:false,
           age:17
         },
-        methods: {
+        methods:{
           changeIsShow:function(){
             this.isShow = !this.isShow;
           },

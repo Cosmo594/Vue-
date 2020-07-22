@@ -15,9 +15,9 @@
 
 <body>
     <div id="app">
-        <img v-bind:src="imgSrc" alt="">
+        <img v-bind:src="imgSrc" alt="" :class="isActive?'active':''" @click="toggleActive">
         <br>
-        <img :src="imgSrc" alt="" :title="imgTitle+'!!!'" :class="isActive?'active':''" @click="toggleActive">
+        <img :src="imgSrc" alt="" :title="imgTitle+'!!!'">
         <br>
         <img :src="imgSrc" alt="" :title="imgTitle+'!!!'" :class="{active:isActive}" @click="toggleActive">
     </div>
@@ -28,14 +28,14 @@
             el:"#app",
             data:{
                 imgSrc:"http://www.itheima.com/images/logo.png",
-                imgTitle:"黑马程序员",
+                imgTitle:"黑马",
                 isActive:false
             },
-            methods: {
+            methods:{
                 toggleActive:function(){
                     this.isActive = !this.isActive;
                 }
-            },
+            }
         })
     </script>
 </body>
