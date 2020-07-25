@@ -23,8 +23,11 @@
         <!-- 搜索歌曲列表 -->
         <div class='song_wrapper'>
           <ul class="song_list">
-           <li><a href="javascript:;"></a> <b>你好</b> <!----></li>
-           <li><a href="javascript:;"></a> <b>你好</b> <span><i></i></span></li>
+           <li v-for="item in musicList">
+             <a href="javascript:;"></a>
+             <b> {{item.name}} </b>
+             <span><i></i></span>
+            </li>
           </ul>
           <img src="images/line.png" class="switch_btn" alt="">
         </div>
@@ -63,6 +66,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <!-- 官网提供的 axios 在线地址 -->
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="./js/main.js"></script>
 
 </body>
 
