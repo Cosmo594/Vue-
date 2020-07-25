@@ -11,7 +11,7 @@
 <body>
     <div id="app">
         <input type="button" value="获取笑话" @click="getJoke">
-        <p> {{ joke }}</p>
+        <p> {{joke}} </p>
     </div>
     <!-- 官网提供的 axios 在线地址 -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -30,20 +30,21 @@
             data:{
                 joke:"很好笑的笑话"
             },
-            methods: {
+            methods:{
                 getJoke:function(){
                     // console.log(this.joke);
                     var that = this;
-                    axios.get("https://autumnfish.cn/api/joke").then(function(response){
-                        // console.log(response)
+                    axios.get("https://autumnfish.cn/api/joke")
+                    .then(function(response){
                         console.log(response.data);
                         // console.log(this.joke);
                         that.joke = response.data;
-                    },function (err) {  })
-                }
-            },
-        })
+                    },function(err){
 
+                    })
+                }
+            }
+        })
     </script>
 </body>
 
