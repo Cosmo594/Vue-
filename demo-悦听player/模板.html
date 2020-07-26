@@ -24,29 +24,29 @@
         <div class='song_wrapper'>
           <ul class="song_list">
            <li v-for="item in musicList">
-             <a href="javascript:;"></a>
+             <a href="javascript:;" @click="playMusic(item.id)"></a>
              <b> {{item.name}} </b>
-             <span><i></i></span>
+             <span v-if="item.mvid!=0" @click="playMV(item.mvid)"><i></i></span>
             </li>
           </ul>
           <img src="images/line.png" class="switch_btn" alt="">
         </div>
         <!-- 歌曲信息容器 -->
-        <div class="player_con" class="playing">
+        <div class="player_con" :class="{playing:isPlaying}">
           <img src="images/player_bar.png" class="play_bar" />
           <!-- 黑胶碟片 -->
           <img src="images/disc.png" class="disc autoRotate" />
-          <img src="images/cover.png" class="cover autoRotate" />
+          <img :src="musicCover" class="cover autoRotate" />
         </div>
         <!-- 评论容器 -->
         <div class="comment_wrapper">
           <h5 class='title'>热门留言</h5>
           <div class='comment_list'>
-            <dl >
-              <dt><img src="./images/person.png" alt=""></dt>
-              <dd class="name">盐焗西兰花</dd>
+            <dl v-for="item in hotComments">
+              <dt><img :src="item.user.avatarUrl" alt=""></dt>
+              <dd class="name"> {{item.user.nickname}} </dd>
               <dd class="detail">
-                绝对值得一听，吹爆
+                {{item.content}}
               </dd>
             </dl>
           </div>
@@ -54,11 +54,11 @@
         </div>
       </div>
       <div class="audio_con">
-        <audio ref='audio'  src="" controls autoplay loop class="myaudio"></audio>
+        <audio ref='audio' @play="play" @pause="pause" :src="musicUrl" controls autoplay loop class="myaudio"></audio>
       </div>
-      <div class="video_con"  style="display: none;">
-        <video  controls="controls"></video>
-        <div class="mask" ></div>
+      <div class="video_con" v-show="isShow" style="display: none;">
+        <video :src="mvUrl" controls="controls"></video>
+        <div class="mask" @click="hide"></div>
       </div>
     </div>
   </div>
